@@ -1,0 +1,68 @@
+-- Query 1: Create database and use it
+
+CREATE DATABASE company;
+
+USE company;
+
+
+-- Query 2: Create Department Table
+
+CREATE TABLE Department (
+    D_id INT PRIMARY KEY,
+    Dname VARCHAR(50)
+);
+
+
+-- Query 3: Create Employee Table
+
+CREATE TABLE Employee (
+    E_id INT PRIMARY KEY,
+    D_id INT,
+    Ename VARCHAR(50),
+    FOREIGN KEY (D_id) REFERENCES Department(D_id)
+);
+
+
+-- Query 4: Insert values
+
+INSERT INTO Department VALUES (1, 'HR');
+INSERT INTO Department VALUES (2, 'IT');
+INSERT INTO Department VALUES (3, 'Finance');
+
+INSERT INTO Employee VALUES (101, 1, 'Rahul');
+INSERT INTO Employee VALUES (102, 2, 'Amit');
+INSERT INTO Employee VALUES (103, 2, 'Neha');
+INSERT INTO Employee VALUES (104, 4, 'Kiran');  -- unmatched for join example
+
+
+-- Query 5: Display Department table
+
+SELECT * FROM Department;
+
+
+-- Query 6: Display Employee table
+
+SELECT * FROM Employee;
+
+
+-- Query 7: INNER JOIN
+
+SELECT E.E_id, E.Ename, D.Dname
+FROM Employee E
+INNER JOIN Department D
+ON E.D_id = D.D_id;
+
+
+-- Query 8: NATURAL JOIN
+
+SELECT *
+FROM Employee
+NATURAL JOIN Department;
+
+
+-- Query 9: LEFT OUTER JOIN
+
+SELECT E.E_id, E.Ename, D.Dname
+FROM Employee E
+LEFT JOIN Department D
+ON E.D_id = D.D_id;
