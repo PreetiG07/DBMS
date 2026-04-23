@@ -1,0 +1,60 @@
+-- Query 1: Create database and table
+
+CREATE DATABASE Comp;
+
+USE Comp;
+
+CREATE TABLE Emp (
+    E_id INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Jobtitle VARCHAR(50),
+    Salary INT
+);
+
+
+-- Query 2: Insert values
+-- (First row: apni details dal sakte ho)
+
+INSERT INTO Emp VALUES (1, 'Nikhil', 'Clerk', 15000);
+INSERT INTO Emp VALUES (2, 'Amit', 'Manager', 30000);
+INSERT INTO Emp VALUES (3, 'Rahul', 'Clerk', 12000);
+INSERT INTO Emp VALUES (4, 'Neha', 'Manager', 35000);
+INSERT INTO Emp VALUES (5, 'Kiran', 'Engineer', 28000);
+
+
+-- Query 3: Display result
+
+SELECT * FROM Emp;
+
+
+-- Query 4: Employees whose salary is NOT equal to minimum salary of Clerk
+
+SELECT *
+FROM Emp
+WHERE Salary <> (
+    SELECT MIN(Salary)
+    FROM Emp
+    WHERE Jobtitle = 'Clerk'
+);
+
+
+-- Query 5: Employees whose salary is equal to salary of Manager
+
+SELECT *
+FROM Emp
+WHERE Salary IN (
+    SELECT Salary
+    FROM Emp
+    WHERE Jobtitle = 'Manager'
+);
+
+
+-- Query 6: Employees whose salary is greater than average salary of Manager
+
+SELECT *
+FROM Emp
+WHERE Salary > (
+    SELECT AVG(Salary)
+    FROM Emp
+    WHERE Jobtitle = 'Manager'
+);
