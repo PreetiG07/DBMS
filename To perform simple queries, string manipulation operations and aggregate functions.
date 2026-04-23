@@ -1,0 +1,75 @@
+-- Query 1: Create Database and Student Table
+
+CREATE DATABASE College;
+
+USE College;
+
+CREATE TABLE Student (
+    roll_no INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT,
+    address VARCHAR(100)
+);
+
+
+-- Query 2: Insert values into Student Table
+-- (First row: apni details dal sakte ho)
+
+INSERT INTO Student VALUES (1, 'Nikhil', 85, 'Borivali');
+INSERT INTO Student VALUES (2, 'Amit', 78, 'Bandra');
+INSERT INTO Student VALUES (3, 'Bhavesh', 90, 'Baroda');
+INSERT INTO Student VALUES (4, 'Kiran', 65, 'Surat');
+INSERT INTO Student VALUES (5, 'Bharat', 88, 'Bhopala');
+
+
+-- Query 3: Display the Result
+
+SELECT * FROM Student;
+
+
+-- Query 4: Count students with roll_no > 2
+
+SELECT COUNT(*) AS Total_Students
+FROM Student
+WHERE roll_no > 2;
+
+
+-- Query 5: Sum of marks
+
+SELECT SUM(marks) AS Total_Marks
+FROM Student;
+
+
+-- Query 6: Student with last roll_no
+
+SELECT *
+FROM Student
+WHERE roll_no = (SELECT MAX(roll_no) FROM Student);
+
+
+-- Query 7: Student with minimum marks
+
+SELECT *
+FROM Student
+WHERE marks = (SELECT MIN(marks) FROM Student);
+
+
+-- Query 8: Student whose name starts with 'B'
+
+SELECT *
+FROM Student
+WHERE name LIKE 'B%';
+
+
+-- Query 9: Student whose name ends with 'R'
+
+SELECT *
+FROM Student
+WHERE name LIKE '%R';
+
+
+-- Query 10: Address starts with 'B' and ends with 'a'
+
+SELECT *
+FROM Student
+WHERE address LIKE 'B%a';
