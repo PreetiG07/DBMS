@@ -1,0 +1,58 @@
+-- Query 1: Create Doctor and Patient Tables
+
+CREATE TABLE Doctor (
+    DoctorID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Specialization VARCHAR(50)
+);
+
+CREATE TABLE Patient (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Disease VARCHAR(50),
+    Weight INT
+);
+
+
+-- Query 2: Insert Values
+
+INSERT INTO Doctor VALUES (1, 'Dr. Sharma', 'Cardiology');
+INSERT INTO Doctor VALUES (2, 'Dr. Mehta', 'Neurology');
+
+INSERT INTO Patient VALUES (101, 'Rahul', 'Cold', 55);
+INSERT INTO Patient VALUES (102, 'Amit', 'Fever', 65);
+INSERT INTO Patient VALUES (103, 'Neha', 'Cold', 50);
+
+
+-- Query 3: Show Patients Name with Disease Cold
+
+SELECT Name 
+FROM Patient 
+WHERE Disease = 'Cold';
+
+
+-- Query 4: Update the weight of Patient to 60
+
+UPDATE Patient 
+SET Weight = 60;
+
+
+-- Query 5: Add column Height to both tables
+
+ALTER TABLE Doctor ADD Height INT;
+ALTER TABLE Patient ADD Height INT;
+
+
+-- Query 6: Delete column Height from Patient table
+
+ALTER TABLE Patient DROP COLUMN Height;
+
+
+-- Query 7: Delete all rows from Doctor Table
+
+DELETE FROM Doctor;
+
+
+-- Query 8: Delete structure of Patient Table
+
+DROP TABLE Patient;
