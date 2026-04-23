@@ -1,0 +1,5 @@
+Queries on trigger:
+Query 1: Create a database University and table Student with attributes (gpa, Branch, Syear, S_id
+PRIMARY KEY) and insert values.
+Query 2: Create a trigger and insert value of gpa as 'NULL' where gpa is less than or equal to 0.
+Query 3: Insert new value and check the trigger.
