@@ -1,0 +1,54 @@
+-- Query 1: Create Doctor and Patient Tables
+
+CREATE TABLE Doctor (
+    DoctorID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Specialization VARCHAR(50)
+);
+
+CREATE TABLE Patient (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Disease VARCHAR(50),
+    Weight INT
+);
+
+
+-- Query 2: Insert Values
+
+INSERT INTO Doctor VALUES (1, 'Dr. Sharma', 'Cardiology');
+INSERT INTO Doctor VALUES (2, 'Dr. Mehta', 'Neurology');
+
+INSERT INTO Patient VALUES (101, 'Rahul', 'Cold', 55);
+INSERT INTO Patient VALUES (102, 'Amit', 'Fever', 65);
+INSERT INTO Patient VALUES (103, 'Neha', 'Cold', 50);
+
+
+-- Query 3: Grant access of Patient table to user1
+
+GRANT SELECT, INSERT, UPDATE ON Patient TO user1;
+
+
+-- Query 4: Revoke access from user1
+
+REVOKE SELECT, INSERT, UPDATE ON Patient FROM user1;
+
+
+-- Query 5: Transaction with SAVEPOINT and ROLLBACK
+
+START TRANSACTION;
+
+-- First update
+UPDATE Patient SET Weight = 60 WHERE PatientID = 101;
+
+-- Create Savepoint
+SAVEPOINT sp1;
+
+-- Second update
+UPDATE Patient SET Weight = 70 WHERE PatientID = 101;
+
+-- Rollback to savepoint (undo second update)
+ROLLBACK TO sp1;
+
+-- Final commit
+COMMIT;
