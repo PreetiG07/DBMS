@@ -1,0 +1,40 @@
+-- Query 1: Create Database and Doctor Table
+
+CREATE DATABASE hospital;
+
+USE hospital;
+
+CREATE TABLE Doctor (
+    DoctorID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Specialization VARCHAR(50)
+);
+
+
+-- Query 2: Insert values into Doctor Table
+
+INSERT INTO Doctor VALUES (1, 'Dr. Sharma', 'Cardiology');
+INSERT INTO Doctor VALUES (2, 'Dr. Mehta', 'Neurology');
+
+
+-- Query 3: Create Patient Table
+
+CREATE TABLE Patient (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Disease VARCHAR(50),
+    Weight INT
+);
+
+
+-- Query 4: Insert values into Patient Table
+
+INSERT INTO Patient VALUES (101, 'Rahul', 'Cold', 55);
+INSERT INTO Patient VALUES (102, 'Amit', 'Fever', 65);
+INSERT INTO Patient VALUES (103, 'Neha', 'Cold', 50);
+
+
+-- Query 5: Display the result
+
+SELECT * FROM Doctor;
+SELECT * FROM Patient;
