@@ -1,0 +1,57 @@
+-- Query 1: Create Database and College Table
+
+CREATE DATABASE UNIVERSITYCOLLEGE;
+
+USE UNIVERSITYCOLLEGE;
+
+CREATE TABLE College (
+    c_name VARCHAR(50),
+    c_id INT PRIMARY KEY,
+    dept VARCHAR(50)
+);
+
+
+-- Query 2: Insert values into College
+
+INSERT INTO College VALUES ('ABC College', 1, 'Science');
+INSERT INTO College VALUES ('XYZ College', 2, 'Commerce');
+INSERT INTO College VALUES ('PQR College', 3, 'Arts');
+
+
+-- Query 3: Display College Table
+
+SELECT * FROM College;
+
+
+-- Query 4: Create Faculty Table
+
+CREATE TABLE Faculty (
+    fname VARCHAR(25),
+    fid INT PRIMARY KEY,
+    dept VARCHAR(25)
+);
+
+
+-- Query 5: Insert values into Faculty
+-- (First row: apni details dal sakte ho)
+
+INSERT INTO Faculty VALUES ('Nikhil', 101, 'Science');
+INSERT INTO Faculty VALUES ('Amit', 102, 'Commerce');
+INSERT INTO Faculty VALUES ('Neha', 103, 'Arts');
+
+
+-- Query 6: Create View NewCollege
+
+CREATE VIEW NewCollege AS
+SELECT c_name, dept
+FROM College;
+
+
+-- (Optional: Check View)
+
+SELECT * FROM NewCollege;
+
+
+-- Query 7: Drop the View
+
+DROP VIEW NewCollege;
